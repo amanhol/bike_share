@@ -20,7 +20,7 @@ def main():
     st.markdown("Roberto Delan, Amanda Holsteinson, Maud Lecerf, Christopher Stephan, Max Uebele")
     
     image = Image.open("bikes.jpg")
-    st.image(image, use_column_width=True)
+    st.image(image, width="stretch")
 
     st.header("Analysis of the Bike Sharing Service in 2011 and 2012 in Washington D.C.")
     
@@ -50,7 +50,7 @@ def main():
     fig1.update_xaxes(title="Date")
     fig1.update_yaxes(title= f"{RENTAL_TYPE} Rentals from 2011 to 2012 (all values)")
 
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1, width="stretch")
     
     st.write("Overall increasing trend with a clear seasonal pattern. Registered users consistently outnumber casual ones, suggesting a **positive trend for long-term sustainability**.")
 
@@ -63,7 +63,7 @@ def main():
     fig2 = px.bar(monthly, y=RENTAL_TYPE, template = 'plotly_white', 
                   title = f"Number of {RENTAL_TYPE} Rentals per Month")
     
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, width="stretch")
     
     st.write("We can see **high seasonality** with more rentals between June to August and less rentals between November to February. When looking at Casual users, we see more fluctuations throughout the year, likely influenced by holidays, weather conditions and special events.")
     
@@ -83,7 +83,7 @@ def main():
                    annotation_text=f"Overall Avg:{int(overall_avg)}",annotation_position="top left")
     
     fig3.update_layout(xaxis=dict(title="Day of the Week"),yaxis=dict(title=f"Average {RENTAL_TYPE} Rentals per Hour of the Day"))
-    st.plotly_chart(fig3, use_container_width=True)
+    st.plotly_chart(fig3, width="stretch")
     
     st.write("The repartition of rentals between the days of the week is very different for the Casual and Registered users. One area to focus on could be **finding casual users that would use the bikes during the week**, such as tourists that come for extended holidays. Another area to focus on would be **having more registered users during the weekend**, with promotions on the weekends for example, depending on the subscription system.")
     
@@ -101,7 +101,7 @@ def main():
                   template = 'plotly_white')
     fig4.update_layout(xaxis=dict(dtick=1))
     
-    st.plotly_chart(fig4, use_container_width=True)
+    st.plotly_chart(fig4, width="stretch")
     
     st.write("We have **distinct hour peaks**, 2 for the weekdays and 1 for the weekend, **coincidental with registered and casual users**. For the registered users during the week, we can attribute the peaks to commute times. ")
     
@@ -112,7 +112,7 @@ def main():
         title=f"Distribution of {RENTAL_TYPE} Rentals by Weather Situation")
 
     fig5.update_layout(template="plotly_white", xaxis_title="Weather Situation", yaxis_title="Total Rentals", font=dict(size=14))
-    st.plotly_chart(fig5, use_container_width=True)
+    st.plotly_chart(fig5, width="stretch")
     
     st.write("""
     Weather Situation Definition: 
@@ -137,7 +137,7 @@ def main():
     
     fig6.add_annotation(x=35,  y=150,  text= f"<b>y = {slope:.2f}x + {intercept:.2f}</b>",
                         showarrow=False,font=dict(color="#FF1493", size=18), align="right")
-    st.plotly_chart(fig6, use_container_width=True)
+    st.plotly_chart(fig6, width="stretch")
     
     st.write('As can be expected, we have a **positive correlation between temperature and number of users**. However the intercept is negative for Casual rentals, showing that casual users will only ride in a nicer temperature whereas Registered user adapt more to the temperature and weather conditions.')
     
@@ -181,7 +181,7 @@ def main():
     fig7.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     
     st.subheader('Map of the Bike Sharing Stations in Washington D.C.(2024)')
-    st.plotly_chart(fig7, use_container_width=True)
+    st.plotly_chart(fig7, width="stretch")
     
     url = 'https://opendata.dc.gov/datasets/DCGIS::capital-bikeshare-locations/about'
     st.write("[Bike Share Map Data](%s)" % url)
@@ -229,7 +229,7 @@ def main():
         name='Ideal Line',
         line=dict(color='#FF1493', width=3))
     
-    st.plotly_chart(fig8, use_container_width=True)
+    st.plotly_chart(fig8, width="stretch")
     
     st.success("The predictions are following the test values very closely.")
     st.write('The Casual Predictions are furher from the line, showing the model performs less well. This is due to the casual data having less value, due to a lower number of casual users.')
